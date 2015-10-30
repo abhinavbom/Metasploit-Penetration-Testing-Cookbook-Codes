@@ -1,0 +1,106 @@
+
+Guidelines for running command lines – Chapter 1
+
+Here I will explain the setup that is required to run the commands mentioned in the book. I have divided this documentation according to the recipes. 
+Configuring Metasploit on Ubuntu 
+To execute the command lines mentioned in this chapter we will require ubuntu operating system installed. 
+We can start the terminal window and pass on the commands to execute them. Also we will need a downloaded copy of metasploit framework for Linux. For this recipe we are considering that we have version 4 of metasploit framework.
+The command lines used in this recipe are
+$ chmod +x framework-4.*-linux-full.run
+$ sudo ./framework-4.*-linux-full.run 
+
+
+$ chmod +x framework-4.*-linux-mini.run
+$ sudo ./framework-4.*-linux-mini.run
+
+$ sudo apt-get install ruby libopenssl-ruby libyaml-ruby libdl-ruby     libiconv-ruby libreadline-ruby irb ri rubygems
+
+$ sudo apt-get install subversion
+
+$ sudo apt-get install build-essential ruby-dev libpcap-dev
+
+$ tar xf framework-4.X.tar.gz
+$ sudo mkdir -p /opt/metasploit4
+$ sudo cp -a msf4/ /opt/metasploit3/msf4
+$ sudo chown root:root -R /opt/metasploit4/msf4
+$ sudo ln -sf /opt/metasploit3/msf3/msf* /usr/local/bin/
+
+
+ 
+
+
+Metasploit with BackTrack 5 – The Ultimate combination
+This recipe will need an installed copy of BackTrack 5 operating system. It will not require downloading metasploit framework as Backtrack OS comes pre-installed with metasploit.
+The command lines used in this recipe are:
+The metasploit command line console or msfconsole can be started by following the listed path on the Backtrack desktop : Applications > Exploitation Tools > Metasploit > Framework
+The commands mentioned in this recipe will require launching the terminal window in BT5 OS. The commands are :
+root@bt:~# cd /pentest/exploits/framework3
+root@bt:/pentest/exploits/framework3 ~# ./msfconsole
+
+These commands will have to be executed from the terminal window in order to start the msfconsole.
+
+Connecting Metasploit on virtual machine with SSH connectivity
+The commands mentioned in this recipe can also be executed directly from the terminal of BackTrack OS. The commands used are:
+root@bt:~# /etc/init.d/start ssh 
+root@bt:~# start ssh
+
+root@bt:~# ifconfig
+
+
+Beginning with Interfaces- The “hello world” of metasploit 
+The commands mentioned in this recipe can be executed directly from the Backtrack terminal and needs no other installation. The commands used are:
+root@bt:~# cd /pentest/exploits/framework3
+
+root@bt:/pentest/exploits/framework3# ./msfconsole
+
+
+msf > ls
+msf > help
+msf > msfupdate
+
+Setting up the database in Metasploit
+The following commands have to be executed directly from the Backtrack console
+root@bt:~# cd /opt/framework3/config
+
+root@bt:/opt/framework3/config# cat database.yml
+
+The next set of commands will be executed from the msfconsole. Msfconsole can be launched by navigating through : Applications > Exploitation Tools > Metasploit > Framework > msfconsole
+Once the msfconsole starts we will find that the terminal now lists as msf> .
+Now we can execute the other commands of this recipe.
+
+msf > db_driver
+Msf> db_driver mysql
+
+msf > db_connect msf3:8b826ac0@127.0.0.1:7175/msf3
+
+msf> gem install postgres
+msf> apt-get install libpq-dev 
+
+msf> db_destroy msf3:8b826ac0@127.0.0.1:7175/msf3
+
+
+Using database to store Penetration testing results
+
+The commands mentioned in this recipe will be executed from the msfconsole. Msfconsole can be launched by navigating through : Applications > Exploitation Tools > Metasploit > Framework > msfconsole
+The commands include:
+msf > db_nmap 192.168.56.102
+
+msf > nmap 192.168.56.102 –A -oX report
+
+
+
+
+
+Analysing the stored results of the database
+
+The commands mentioned in this recipe will be executed from the msfconsole. Msfconsole can be launched by navigating through : Applications > Exploitation Tools > Metasploit > Framework > msfconsole
+The commands used are:
+msf > hosts address,os_name
+msf > hosts -c 
+msf > services
+msf > vulns
+
+Msf > db_autopwn
+
+
+
